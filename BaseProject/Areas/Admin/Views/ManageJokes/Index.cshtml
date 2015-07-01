@@ -1,0 +1,67 @@
+﻿@model AdminPagingResult<ManageJokesModel>
+@{
+    ViewBag.Title = "Manage Jokes";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@section scripts{
+    @Scripts.Render("~/Content/Admin/ManageJokesManager")
+    <script type="text/javascript">
+        isSaved = true;
+        Joke.ManageJoke('@Model.TotalCount');
+    </script>
+}
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            Manage Jokes
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+            </small>
+        </h1>
+    </div>
+    <div class="add">
+        <a href="@Url.Action("AddEditJoke", "ManageJokes", new { Area = "Admin", JokeId=0 })" class="label label-primary pull-right">Add Joke</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well my_well">
+                <table class="table table-bordered table-striped" name="Listing">
+                    <thead class="thin-border-bottom">
+                        <tr>
+                            <th>
+                                <i class="fa fa-sort "> <span class="JokeCategorie">Joke Categories</span> </i>
+                            </th>
+                            <th>
+                                <i class="fa fa-sort "> <span class="JokeTitle">Joke Tittle</span></i>
+                            </th>
+                            <th class="hidden-480" width="30%">
+                                <i class="fa fa-sort "> <span class="JokeDetail"> Joke </span> </i>
+                            </th>
+                            <th class="">
+                                <i class="fa fa-sort "> <span class="DatePosted"> Date Posted</span> </i>
+                            </th>                           
+                            <th class="hidden-480">
+                                <i class="fa fa-sort "> <span class="JokeFlag"> Approved Jokes</span></i>
+                            </th>
+                            <th class="hidden-480">
+                                <i class="fa">  Action </i>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="Result">
+                        @Html.Partial("Partials/_JokesListing", Model)
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="floatright">
+            @Html.Partial("_Paging")
+        </div>
+    </div>
+</div>

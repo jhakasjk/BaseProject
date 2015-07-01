@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="500" />
+          <Property Name="StackTrace" Type="varchar(max)" />
+          <Property Name="InnerException" Type="varchar(max)" />
+          <Property Name="LoggedInDetails" Type="varchar(max)" />
+          <Property Name="QueryData" Type="varchar(max)" />
+          <Property Name="FormData" Type="varchar(max)" />
+          <Property Name="RouteData" Type="varchar(max)" />
+          <Property Name="LoggedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserLoginSessions">
+          <Key>
+            <PropertyRef Name="UserLoginSessionID" />
+          </Key>
+          <Property Name="UserLoginSessionID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="LoggedInTime" Type="datetime" Nullable="false" />
+          <Property Name="LoggedOutTime" Type="datetime" />
+          <Property Name="SessionExpired" Type="bit" Nullable="false" />
+          <Property Name="LoggedInDeviceToken" Type="varchar" MaxLength="500" />
+          <Property Name="DeviceType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastFailedAttempt" Type="datetime" />
+          <Property Name="FailedAttempts" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="SourceType" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="DateConfirmed" Type="datetime" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="OtherState" Type="varchar" MaxLength="50" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="OtherCity" Type="varchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="6" />
+          <Property Name="Website" Type="varchar" MaxLength="200" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="ProfilePicture" Type="varchar" MaxLength="200" />
+          <Property Name="Password" Type="varbinary" MaxLength="250" />
+          <Property Name="RegisterVia" Type="int" Nullable="false" />
+          <Property Name="RegistrationIP" Type="varchar" MaxLength="20" />
+          <Property Name="ResetPassword" Type="bit" Nullable="false" />
+          <Property Name="PasswordResetCode" Type="varchar" MaxLength="50" />
+          <Property Name="FacbookUserID" Type="varchar" MaxLength="200" />
+          <Property Name="TotalEarning" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__UserLogin__UserI__1ED998B2">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserLoginSessions" Type="Self.UserLoginSessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserLoginSessions">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLoginSessions" EntityType="Self.UserLoginSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__UserLogin__UserI__1ED998B2" Association="Self.FK__UserLogin__UserI__1ED998B2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserLoginSessions" EntitySet="UserLoginSessions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InnerException" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LoggedInDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="QueryData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FormData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RouteData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LoggedAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ErrorLogs" EntityType="Self.ErrorLog" />
+          <EntitySet Name="Users" EntityType="DBModel.User" />
+          <EntitySet Name="UserLoginSessions" EntityType="DBModel.UserLoginSession" />
+          <AssociationSet Name="FK__UserLogin__UserI__1ED998B2" Association="DBModel.FK__UserLogin__UserI__1ED998B2">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserLoginSession" EntitySet="UserLoginSessions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastFailedAttempt" Type="DateTime" Precision="3" />
+          <Property Name="FailedAttempts" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="SourceType" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="DateConfirmed" Type="DateTime" Precision="3" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="OtherState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="OtherCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="ProfilePicture" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="Binary" MaxLength="250" FixedLength="false" />
+          <Property Name="RegisterVia" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ResetPassword" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordResetCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FacbookUserID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TotalEarning" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="UserLoginSessions" Relationship="DBModel.FK__UserLogin__UserI__1ED998B2" FromRole="User" ToRole="UserLoginSession" />
+        </EntityType>
+        <EntityType Name="UserLoginSession">
+          <Key>
+            <PropertyRef Name="UserLoginSessionID" />
+          </Key>
+          <Property Name="UserLoginSessionID" Type="Guid" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="LoggedInTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoggedOutTime" Type="DateTime" Precision="3" />
+          <Property Name="SessionExpired" Type="Boolean" Nullable="false" />
+          <Property Name="LoggedInDeviceToken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DBModel.FK__UserLogin__UserI__1ED998B2" FromRole="UserLoginSession" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__UserLogin__UserI__1ED998B2">
+          <End Type="DBModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DBModel.UserLoginSession" Role="UserLoginSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserLoginSession">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="DBModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="InnerException" ColumnName="InnerException" />
+                <ScalarProperty Name="LoggedInDetails" ColumnName="LoggedInDetails" />
+                <ScalarProperty Name="QueryData" ColumnName="QueryData" />
+                <ScalarProperty Name="FormData" ColumnName="FormData" />
+                <ScalarProperty Name="RouteData" ColumnName="RouteData" />
+                <ScalarProperty Name="LoggedAt" ColumnName="LoggedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="TotalEarning" ColumnName="TotalEarning" />
+                <ScalarProperty Name="FacbookUserID" ColumnName="FacbookUserID" />
+                <ScalarProperty Name="PasswordResetCode" ColumnName="PasswordResetCode" />
+                <ScalarProperty Name="ResetPassword" ColumnName="ResetPassword" />
+                <ScalarProperty Name="RegistrationIP" ColumnName="RegistrationIP" />
+                <ScalarProperty Name="RegisterVia" ColumnName="RegisterVia" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="OtherCity" ColumnName="OtherCity" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="OtherState" ColumnName="OtherState" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="DateConfirmed" ColumnName="DateConfirmed" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="SourceType" ColumnName="SourceType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FailedAttempts" ColumnName="FailedAttempts" />
+                <ScalarProperty Name="LastFailedAttempt" ColumnName="LastFailedAttempt" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLoginSessions">
+            <EntityTypeMapping TypeName="DBModel.UserLoginSession">
+              <MappingFragment StoreEntitySet="UserLoginSessions">
+                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+                <ScalarProperty Name="LoggedInDeviceToken" ColumnName="LoggedInDeviceToken" />
+                <ScalarProperty Name="SessionExpired" ColumnName="SessionExpired" />
+                <ScalarProperty Name="LoggedOutTime" ColumnName="LoggedOutTime" />
+                <ScalarProperty Name="LoggedInTime" ColumnName="LoggedInTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserLoginSessionID" ColumnName="UserLoginSessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

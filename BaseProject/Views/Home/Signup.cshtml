@@ -1,0 +1,148 @@
+﻿@model WebUser
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<APICountry> Categories = ViewBag.Countries;
+    List<SelectListItem> items = Categories.Select(m => new SelectListItem { Text = m.CountryName, Value = m.CountryID.ToString() }).ToList();
+    SelectList selectList = new SelectList(items, "Value", "Text");
+    string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
+}
+<div class="center-content">
+    <div class="center-inr">
+        <div class="add-joke">
+            <div class="page-header">
+                <h1>Register </h1>
+            </div>
+            <div class="edit-usr-img clearfix">
+                <div class="eu-ibx">
+                    <img src="@Url.Content(baseUrl + "UserImages/" + Constants.DefaultUserPic)" alt="" name="Picture" id="Picture" />
+                </div>
+                <div class="upload-btn">
+                    <span class="up-fake-btn">Upload</span>
+                    <input type="file" name="profilepic" class="uploadProfilePic hdn-file-btn" onchange="uploadTempPic(this)" />
+                    <span class="msg"></span>
+                </div>
+            </div>
+            <div class="add-joke-form register-form">
+                <form action="/Home/Register" class="form-UserRegister" id="form-UserRegister" method="post" onsubmit="return UserRegister(this)">
+                    <div class="aj-fld">
+                        <p class="aj-ttl">Full name</p>
+                        @Html.TextBoxFor(m => m.FullName, new { @class = "add-inpt", @style="width:98%" })
+                        @Html.ValidationMessageFor(m => m.FullName)
+                        <input type="hidden" name="ProfilePicture" id="ProfilePicture" />
+                    </div>
+                    <div class="aj-fld">
+                        <p class="aj-ttl">Display name</p>
+                        @Html.TextBoxFor(m => m.DisplayName, new { @class = "add-inpt", @style = "width:98%" })
+                        @Html.ValidationMessageFor(m => m.DisplayName)
+                    </div>
+                    <div class="aj-fld">
+                        <p class="aj-ttl">Email Address</p>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "add-inpt", @style = "width:98%" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                    <div class="aj-fld clearfix">
+                        <div class="col-sm-6 aj-inr">
+                            <p class="aj-ttl">Password</p>
+                            @Html.PasswordFor(m => m.Password, new { @class = "add-inpt" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                        <div class="col-sm-6 aj-inr">
+                            <p class="aj-ttl">Confirm Password</p>
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "add-inpt" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                        </div>
+                    </div>
+                    <div class="aj-fld clearfix">
+                        <div class="col-sm-6 aj-inr">
+                            <p class="aj-ttl">Country</p>
+                            @Html.DropDownListFor(m => m.CountryID, selectList, "Select Country", new { @class = "add-inpt" })
+                            @Html.ValidationMessageFor(m => m.CountryID)
+                        </div>
+                        <div class="col-sm-6 aj-inr">
+                            <p class="aj-ttl">State</p>
+                            @Html.TextBoxFor(m => m.OtherState, new { @class = "add-inpt" })
+                            @Html.ValidationMessageFor(m => m.OtherState)
+                        </div>
+                    </div>
+                    <div class="aj-fld clearfix">
+                        <div class="col-sm-6 aj-inr">
+                            <p class="aj-ttl">City</p>
+                            @Html.TextBoxFor(m => m.OtherCity, new { @class = "add-inpt" })
+                            @Html.ValidationMessageFor(m => m.OtherCity)
+                        </div>
+                    </div>
+
+
+                    <div class="aj-fld">
+                        <div class="subs">
+                            <span class="check-otr">
+                                @Html.CheckBoxFor(m => m.Subscribe)
+                            </span> Subscribe to Joke a day email
+                        </div>
+                    </div>
+                    <div class="aj-fld">
+                        <input type="submit" value="Register" class="save btns" />
+                        &nbsp;
+                        <span class="msgConfirm"></span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function UserRegister(sender) {
+        $.ajaxExt({
+            url: '/Home/Register',
+            type: 'POST',
+            showErrorMessage: true,
+            validate: true,
+            formToPost: $(sender),
+            messageControl: $('.msgConfirm'),
+            formToValidate: $(sender),
+            showThrobber: true,
+            throbberPosition: { my: "left center", at: "right center", of: $(sender).find('input[type="submit"]'), offset: "5 0" },
+            containFiles: true,
+            success: function (data, msg) {                
+                $('.msgConfirm').html(msg).css({ 'color': 'Green' });
+                document.location.href = '/Home/Login';
+            },
+            error: function (msg) {
+                $('.msgConfirm').html(msg).css({ 'color': 'Red' });
+            }
+        });
+        return false;
+    }
+
+    function uploadTempPic(sender) {
+        var newForm = $("<FORM>");
+        newForm.attr({ method: "POST", enctype: "multipart/form-data" }).hide();
+        newForm.appendTo($("body"));
+
+        var $this = $(sender), $clone = $this.clone();
+        $this.after($clone).appendTo($(newForm));
+
+        $.ajaxExt({
+            url: '@Url.Action("UploadUserProfile", "Home")',
+            type: 'POST',
+            showErrorMessage: true,
+            validate: false,
+            formToPost: newForm,
+            messageControl: $('.msg'),
+            formToValidate: newForm,
+            showThrobber: true,
+            containFiles: true,
+            throbberPosition: { my: "left center", at: "right center", of: $(sender), offset: "5 0" },
+            success: function (data, msg) {
+                $("#Picture").attr('src', data[0]);
+                $("#ProfilePicture").val(data[1]);
+            }, error: function (msg) {
+
+            }
+        });
+        newForm.remove();
+        return false;
+    }
+</script>

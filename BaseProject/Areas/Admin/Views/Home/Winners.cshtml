@@ -1,0 +1,59 @@
+﻿@model PagingResult<JokeWinnerViewModel>
+@{
+    ViewBag.Title = "Winners";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            Winners
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+            </small>
+        </h1>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well my_well">
+                <table class="table table-bordered table-striped" name="Listing">
+                    <thead class="thin-border-bottom">
+                        <tr>
+                            <th>
+                                <i class="fa fa-sort "> <span class="Name"> Full Name</span> </i>
+                            </th>                            
+                            <th class="hidden-480">
+                                <i class="fa fa-sort "> <span class="NumberOfJokes"> Winning Joke </span> </i>
+                            </th>
+                            <th class="hidden-480">
+                                <i class="fa fa-sort "> <span class="ApprovedJokes"> Created On </span> </i>
+                            </th>
+                            <th class="hidden-480">
+                                <i class="fa fa-sort "> <span class="PendingJokes"> Approved On</span></i>
+                            </th>
+                            <th class="hidden-480">
+                                <i class="fa fa-sort "> <span class="PendingJokes"> Award</span></i>
+                            </th>                            
+                            <th class="hidden-480">
+                                <i class="fa">  Action </i>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="Result">
+                        @Html.Partial("_Winners", Model)
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="floatright">
+            @Html.Partial("_Paging")
+        </div>
+    </div>
+</div>
+

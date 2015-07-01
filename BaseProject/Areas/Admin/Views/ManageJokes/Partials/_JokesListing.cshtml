@@ -1,0 +1,47 @@
+﻿@model AdminPagingResult<ManageJokesModel>
+@if (Model.List != null && Model.List.Count > 0)
+{
+
+    foreach (var Joke in Model.List)
+    {
+        <tr rowid="@Joke.JokeID">
+            <td>@Joke.JokeCategorie</td>
+            <td>@Joke.JokeTitle</td>
+            <td>@Joke.JokeDetail</td>
+            <td>@Joke.DatePosted</td>
+
+            <td class="hidden-480">
+                @if (Joke.JokePublished == null)
+                {
+                    <label class="inline">
+                        <input type="checkbox" checked="checked" class="ace">
+                        <span class="lbl">  </span>
+                        <span class="label label-success arrowed-in arrowed-in-right">approved</span>
+                    </label>
+                    
+                }
+                else
+                {
+                    <label class="inline">
+                        <input type="checkbox"  class="ace">
+                        <span class="lbl">  </span>
+                        <span class="label label-danger arrowed-in arrowed-in-right">un approved</span>
+                    </label>
+                    
+                }
+            </td>
+            <td>
+                <a href="@Url.Action("AddEditJoke", "ManageJokes", new { Area = "Admin", JokeId = @Joke.JokeID })" onclick="$('body').removeClass('loaded');" class="label label-success">Edit</a>
+                <a href="#" class="label label-danger" id="DeleteJoke">Delete</a>
+            </td>
+        </tr>
+    }
+}
+else
+{
+    <tr>
+        <td colspan="6">
+            No Record Found
+        </td>
+    </tr>
+}

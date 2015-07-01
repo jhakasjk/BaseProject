@@ -1,0 +1,47 @@
+﻿@model AdminPagingResult<ManageUsersModel>
+@if (Model.List != null && Model.List.Count > 0)
+{
+
+    foreach (var item in Model.List)
+    {
+        <tr rowid="@item.UserID">
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>@item.NumberOfJokes</td>
+            <td class="hidden-480">
+                <span class="label label-success arrowed-in arrowed-in-right">@item.ApprovedJokes</span>
+            </td>
+            <td class="hidden-480">
+                <span class="label label-danger arrowed">@item.PendingJokes</span>
+            </td>
+            <td>
+                @if (@item.Subscribed)
+                {
+                    <label class="inline">
+                        <input type="checkbox" checked="checked" class="ace">
+                        <span class="lbl">  Unsubscribe</span>
+                    </label>
+                }
+                else
+                {
+                    <label class="inline">
+                        <input type="checkbox" class="ace">
+                        <span class="lbl">  Unsubscribe</span>
+                    </label>
+                }
+            </td>
+            <td>
+                <a href="#" class="label label-success">Edit</a>
+                <a href="#" class="label label-danger" id="DeleteUser">Delete</a>
+            </td>
+        </tr>
+    }
+}
+else
+{
+    <tr>
+        <td colspan="6">
+            No Record Found
+        </td>
+    </tr>
+}

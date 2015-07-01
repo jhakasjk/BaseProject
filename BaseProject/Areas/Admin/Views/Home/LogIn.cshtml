@@ -1,0 +1,77 @@
+﻿@model AJAD.Core.Models.Admin.AdminLoginModal
+@{
+    Layout = null;
+    var BaseUrl = @ViewBag.BaseUrl;
+    ViewBag.Title = "Administrator | Login";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Administrator | Login</title>
+    <script>
+        var BaseUrl = "@ViewBag.BaseUrl";
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/AdminCss")
+    <link href="~/Content/Admin/CSS/custom.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                <a href="#" class="logo"><img src="~/Content/Admin/Images/logo.png" class="img-responsive" /><span>A joke A DAY</span></a>
+                <div class="panel panel-default my_panel">
+                    <div class="panel-heading">
+                        <p class="login-title">Login</p>
+                    </div>
+                    <div class="panel-body">
+                            <form action="/Home/LogIn" class="form-signin" id="form-signin" method="post" onsubmit="return UserLogin(this)">
+                                @*<input type="text" class="form-control" placeholder="Email" required autofocus>*@
+                                @*<input type="password" class="form-control" placeholder="Password" required>*@
+
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email", required = "required" })
+                                @Html.ValidationMessageFor(x => x.Email)
+                                @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @placeholder = "Password", Type = "password", required = "required" })
+                                @Html.ValidationMessageFor(x => x.Password)
+                                <button class="btn  btn-primary my_log_btn" type="submit">Sign in</button>
+                                <div class="clearfix"></div>
+                                <div><span class="msgConfirm"></span></div>
+                                <a href="#" class="center need-help">Lost Your Password? </a><span class="clearfix"></span>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="MainThrobberImage" style="position: absolute; z-index: 99999999999999; display: none;">
+        <img alt="throbber" src="http://img-cache.cdn.gaiaonline.com/423f371067090913966ec74ba08e8d1b/http://img.photobucket.com/albums/v382/azuredragon60544/charmander_run__by_ai_ki_san-d4qa7um.gif" width="35" />&nbsp;&nbsp;&nbsp;
+    </div>
+</body>
+</html>
+<script>
+    function UserLogin(sender) {
+        $.ajaxExt({
+            url: BaseUrl+ '/Home/Login',
+            type: 'POST',
+            showErrorMessage: true,
+            validate: true,
+            formToPost: $("form#form-signin"),
+            messageControl: $('.msgConfirm'),
+            formToValidate: $("form#form-signin"),
+            showThrobber: true,
+            throbberPosition: { my: "left center", at: "right center", of: $(sender).find('button[type="submit"]'), offset: "5 0" },
+            containFiles: true,
+            success: function (data,msg) {                
+                //$('.msgConfirm').html(msg).css({ 'color': 'Green' });
+                document.location.href = data;
+            },
+            error: function (msg) {
+                //$('.msgConfirm').html(msg).css({ 'color': 'Red' });
+            }
+        });
+        return false;
+    }
+</script>

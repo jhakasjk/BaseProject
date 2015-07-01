@@ -1,0 +1,72 @@
+﻿@model AdminPagingResult<ManageUsersModel>
+@{
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@section scripts{
+    @Scripts.Render("~/Content/Admin/ManageUsersManager")
+    <script type="text/javascript">
+        isSaved = true;
+        Home.ManageUsers('@Model.TotalCount');
+    </script>
+}
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            Manage Users
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+            </small>
+        </h1>
+    </div>
+
+   
+    <div class="row">
+        <div class="col-md-12">
+            <div class="add">
+                <a href="@Url.Action("AddEditUser", "ManageUsers", new { Area = "Admin", UserId=0 })" class="label label-primary pull-right">Add User</a>
+            </div>
+            <div class="well my_well">
+                <table class="table table-bordered table-striped" name="Listing">
+                    <thead class="thin-border-bottom">
+                        <tr>
+                            <th>
+                                <i class="fa fa-sort "> <span class="Name"> Full Name</span> </i>
+                            </th>
+                            <th>
+                                <i class="fa fa-sort "> <span class="Email">Email Address</span></i>
+                            </th>
+                            <th class="">
+                                <i class="fa fa-sort "> <span class="NumberOfJokes"> #  of Jokes </span> </i>
+                            </th>
+                            <th class="hidden-480">
+                                <i class="fa fa-sort "> <span class="ApprovedJokes"> Approved Jokes </span> </i>
+                            </th>
+                            <th class="hidden-480">
+                                <i class="fa fa-sort "> <span class="PendingJokes"> Pending Jokes</span></i>
+                            </th>
+                            <th class="hidden-480">
+                                <i class="fa">   Subscribed CheckBox</i>
+                            </th>
+                            <th class="hidden-480">
+                                <i class="fa">  Action </i>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="Result">
+                        @Html.Partial("Partials/_UsersListing", Model)
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="floatright">
+            @Html.Partial("_Paging")
+        </div>
+    </div>
+</div>

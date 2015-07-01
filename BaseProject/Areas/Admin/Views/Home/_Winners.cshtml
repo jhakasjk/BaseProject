@@ -1,0 +1,45 @@
+﻿@model PagingResult<JokeWinnerViewModel>
+@if (Model.Data != null && Model.Data.Count > 0)
+{
+    List<RewardTypeViewModel> Rewards = ViewBag.RewardTypes;
+    foreach (var item in Model.Data)
+    {
+        <tr rowid="@item.JokeWinnerID">
+            <td>@item.JokeDetails.UserFullName</td>
+            <td>@item.JokeDetails.Joke</td>
+            <td class="hidden-480">
+                <span class="label label-success arrowed-in arrowed-in-right">@item.CreatedOn</span>
+            </td>
+            <td class="hidden-480">
+                <span class="label label-danger arrowed">@item.ApprovedOn</span>
+            </td>
+            <td>
+                <select class="Rewards">
+                    <option value="">Select Reward</option>
+                    @foreach (var reward in Rewards)
+                    {
+                        if (item.RewardTypeID == reward.RewardTypeId)
+                        {
+                            <option selected="selected" value="@reward.RewardTypeId">@reward.RewardName</option>
+                        }
+                        else
+                        {
+                            <option value="@reward.RewardTypeId">@reward.RewardName</option>
+                        }
+                    }
+                </select>
+            </td>
+            <td>
+                <a href="@Url.Action("AddEditUser", "ManageUsers", new { Area = "Admin", UserId = @item.JokeWinnerID })" onclick="AwardWinner(this, @item.JokeWinnerID)" class="label label-success">Award</a>
+            </td>
+        </tr>
+    }
+}
+else
+{
+    <tr>
+        <td colspan="6">
+            No Record Found
+        </td>
+    </tr>
+}
