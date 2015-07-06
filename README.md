@@ -12,6 +12,12 @@ Solution is having 5 projects under it.
 Base Project
 It's a ASP.NET MVC 5 WebAPI 2 project having Controllers & Views. I have implemented DI with Ninject IoC container with naming conventions in this project.
 
+BaseProject.WebAPI
+It's a separate project for making RESTfull services using WebApi 2.
+
+MvcGlobalisationSupport
+This is a class library project to provide multi lingual support to main web project.
+
 CoreEntities
 It's a class library project having entities defined in it. It also has Models required for MVC project.
 
