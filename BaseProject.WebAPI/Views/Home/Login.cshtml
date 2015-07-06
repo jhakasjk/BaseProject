@@ -1,0 +1,165 @@
+﻿@model LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Base Project</title>
+
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/Content/css/ace-fonts.css" />
+    <link rel="stylesheet" href="~/Content/css/custom.css" />
+
+    <script type="text/javascript" src="/Scripts/html5.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="//malsup.github.com/jquery.form.js"></script>
+    <script src="~/Scripts/UserDefinedScripts/Common.js"></script>
+    @*<script src="/Scripts/jquery.form.js"></script>*@
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                <a href="@Url.Action("Index","Home")" class="logo"><img src="/Content/images/logo.png" class="img-responsive" /><span>Base Project</span></a>
+                <div class="panel panel-default my_panel">
+                    <div class="panel-heading">
+                        <p class="login-title">Login</p>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/Home/DoLogin" class="form-signin" id="form-signin" method="post" onsubmit="return UserLogin(this)">
+                            @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email)
+                            @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                            <button class="btn  btn-primary my_log_btn" type="submit">Sign in</button>
+                            <button class="btn  btn-primary my_log_btn fb1_btn" type="button" onclick="OpenFbPopup(this)"><i class="fa fa-facebook-square"></i>&nbsp;&nbsp;Facebook</button>
+                            <div class="clearfix"></div>
+                            <div><span class="msgConfirm"></span></div>
+                            <a href="javascript:;" onclick="ForgotPassword(this)" class="center need-help">Lost Your Password? </a><span class="clearfix"></span>
+                        </form>
+                    </div>
+                </div>
+                <a href="@Url.Action("Signup","Home")" class="text-center new-account">Create an account </a>
+            </div>
+        </div>
+    </div>
+    <div id="MainThrobberImage" style="position: absolute; z-index: 99999999999999; display: none;">
+        <img alt="throbber" src="http://img-cache.cdn.gaiaonline.com/423f371067090913966ec74ba08e8d1b/http://img.photobucket.com/albums/v382/azuredragon60544/charmander_run__by_ai_ki_san-d4qa7um.gif" width="35" />&nbsp;&nbsp;&nbsp;
+    </div>
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
+</body>
+</html>
+<script type="text/javascript">
+    function UserLogin(sender) {
+        $.ajaxExt({
+            url: '/Home/DoLogin',
+            type: 'POST',
+            showErrorMessage: true,
+            validate: true,
+            formToPost: $("form#form-signin"),
+            messageControl: $('.msgConfirm'),
+            formToValidate: $("form#form-signin"),
+            showThrobber: true,
+            throbberPosition: { my: "left center", at: "right center", of: $(sender).find('button[type="submit"]'), offset: "5 0" },
+            containFiles: true,
+            success: function (data, msg) {                
+                document.location.href = '/';
+            }
+        });
+        return false;
+    }
+    function OpenFbPopup(sender) {
+        location.href = "@Url.Action("LoginViaFacebook", "Home")";
+    }
+
+    function ForgotPassword(sender) {
+        $('div#Popup').remove(); // remove old
+        $.ajaxExt({
+            type: "POST",
+            data: {},
+            url: '@Url.Action("ForgotPassword", "Home")',
+            success: function (data) {
+                // Open Popup code
+                $('body').append(data[0]); // add new
+                $('#Popup').delay(50).animate({ "opacity": "1" }, 200);
+            },
+            showThrobber: true,
+            throbberPosition: { my: "left center", at: "right center", of: sender, offset: "5 0" },
+            showErrorMessage: false
+        });
+        return false;
+    }
+
+    function SendForgotPassword(sender) {
+        $.ajaxExt({
+            url: '/Home/SendForgotPassword',
+            type: 'POST',
+            showErrorMessage: true,
+            validate: true,
+            formToPost: $(sender),
+            messageControl: $('span.msg-popup'),
+            formToValidate: $(sender),
+            showThrobber: true,
+            throbberPosition: { my: "left center", at: "right center", of: $(sender).find('input[type="submit"]'), offset: "5 0" },
+            containFiles: true,
+            success: function (data, msg) {
+                CloseSuccess();
+                setTimeout(function () {
+                    ResetPasswordPopup(sender, $(sender).find('#UserEmail').val());
+                }, 4000);
+            }
+        });
+        return false;
+    }
+
+    function ResetPasswordPopup(sender, Email) {
+        $('div#Popup').remove(); // remove old
+        $.ajaxExt({
+            type: "POST",
+            data: {Email: Email},
+            url: '@Url.Action("ResetPasswordPopup", "Home")',
+            success: function (data) {
+                // Open Popup code
+                $('body').append(data[0]); // add new
+                $('#Popup').delay(50).animate({ "opacity": "1" }, 200);
+            },
+            showThrobber: true,
+            throbberPosition: { my: "left center", at: "right center", of: sender, offset: "5 0" },
+            showErrorMessage: false
+        });
+        return false;
+    }
+
+    function ResetPassword(sender) {
+        $.ajaxExt({
+            url: '/Home/ResetPassword',
+            type: 'POST',
+            showErrorMessage: true,
+            validate: true,
+            formToPost: $(sender),
+            messageControl: $('span.msg-popup'),
+            formToValidate: $(sender),
+            showThrobber: true,
+            throbberPosition: { my: "left center", at: "right center", of: $(sender).find('input[type="submit"]'), offset: "5 0" },
+            containFiles: true,
+            success: function (data, msg) {
+                CloseSuccess();                
+            }
+        });
+        return false;
+    }
+</script>

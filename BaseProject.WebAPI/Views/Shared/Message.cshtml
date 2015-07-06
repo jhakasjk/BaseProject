@@ -1,0 +1,15 @@
+﻿@model string
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-content">
+    <div class="center-inr Jokes-div">
+        <div class="jokes-pnl" style="padding:10px;height:100%;min-height:400px;">
+            <span style="color:red;">@Html.Raw(Model.Replace("-", " "))</span>
+            <p>Return to <a href="@Url.Action("Index","Home")">Home</a></p>
+        </div>
+    </div>
+</div>
+

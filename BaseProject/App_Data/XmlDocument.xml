@@ -739,5 +739,12 @@
             <param name="DeviceType"></param>
             <returns></returns>
         </member>
+        <member name="M:BaseProject.Helpers.UserHelper.GetUrl(System.String)">
+            <summary>
+            Get the formatted url relative to the root of the current site.
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

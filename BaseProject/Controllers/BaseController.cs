@@ -15,6 +15,7 @@ using CoreEntities.Models;
 using CoreEntities.Interfaces;
 using CoreEntities.Classes;
 using CoreEntities.Enums;
+using BaseProject.Helpers;
 #endregion
 
 namespace BaseProject.Controllers
@@ -25,6 +26,7 @@ namespace BaseProject.Controllers
 
         #region Variable Declaration
         private readonly IErrorLogManager _errorLogManager;
+        protected string SiteCulture { get; set; }
 
         /// <summary>
         /// Contains Information for Logged In User
@@ -66,6 +68,7 @@ namespace BaseProject.Controllers
         /// <param name="filter_context"></param>
         protected override void OnAuthorization(AuthorizationContext filter_context)
         {
+            SiteCulture = UserHelper.GetCulture();
             HttpCookie auth_cookie = Request.Cookies[Cookies.AuthorizationCookie];
             HttpCookie admin_auth_cookie = Request.Cookies[Cookies.AdminAuthorizationCookie];
             #region If auth cookie is present
