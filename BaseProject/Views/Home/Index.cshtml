@@ -1,13 +1,13 @@
 ﻿@{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    List<UserSessions> ExistingVisitorSession = ViewBag.ExistingVisitorSession;
+    List<UserPageView> ExistingVisitorSession = ViewBag.ExistingVisitorSession;
 }
 
 <div class="center-content">
     @BaseProject.Resources.Common.WelcomeMessage
     <div class="center-inr Jokes-div">
-        @Html.Partial("_UserSession")
+        @Html.Partial("_UserSession", ExistingVisitorSession)
     </div>
 </div>
 @section Script{

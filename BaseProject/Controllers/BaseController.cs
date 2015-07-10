@@ -66,7 +66,7 @@ namespace BaseProject.Controllers
             }
         }
 
-        private string UserSessionsToView(List<UserSessions> ExistingVisitorSession)
+        private string UserSessionsToView(List<UserPageView> ExistingVisitorSession)
         {
             return RenderRazorViewToString("_UserSession", ExistingVisitorSession);
         }
@@ -74,21 +74,21 @@ namespace BaseProject.Controllers
         private void UpdateUserSession(string Controller, string Action, string ID)
         {
             string UserIP = Request.UserHostAddress;
-            List<UserSessions> ExistingVisitorSession = System.Web.HttpContext.Current.Application[Sessions.VisitorSessions] as List<UserSessions>;
+            //List<UserSessions> ExistingVisitorSession = System.Web.HttpContext.Current.Application[Sessions.VisitorSessions] as List<UserSessions>;
+            List<UserPageView> ExistingVisitorSession = System.Web.HttpContext.Current.Application[Sessions.VisitorSessions] as List<UserPageView>;
             //System.Web.HttpContext.Current.Application["Name"] = "Value";
             if (ExistingVisitorSession == null) // First User
             {
-                List<UserSessions> ListSes = new List<UserSessions>();
-                UserSessions sess = new UserSessions
+                List<UserPageView> ListSes = new List<UserPageView>();
+                UserPageView sess = new UserPageView
                 {
                     CreatedOn = DateTime.UtcNow,
                     LastActivityOn = DateTime.UtcNow,
                     UserIP = UserIP,
-                    UserPageViews = new List<UserPageView> 
-                    { 
-                        new UserPageView { 
-                            Action = Action, Controller = Controller, ID = ID, Count=1,CreatedOn = DateTime.UtcNow,LastActivityOn = DateTime.UtcNow}
-                    }
+                    Action = Action,
+                    Controller = Controller,
+                    ID = ID,
+                    Count = 1
                 };
                 ListSes.Add(sess);
                 ExistingVisitorSession = ListSes;
@@ -101,8 +101,9 @@ namespace BaseProject.Controllers
             {
                 if (ExistingVisitorSession.Where(m => m.UserIP == UserIP).Any()) // Existing User
                 {
-                    UserSessions UserSes = ExistingVisitorSession.Where(m => m.UserIP == UserIP).FirstOrDefault();
-                    UserPageView PageView = UserSes.UserPageViews.Where(m => m.ID == ID && m.Controller == m.Controller && m.Action == Action).FirstOrDefault();
+                    //List<UserPageView> UserSes = ExistingVisitorSession.Where(m => m.UserIP == UserIP).ToList();
+                    //UserPageView PageView = UserSes.UserPageViews.Where(m => m.ID == ID && m.Controller == m.Controller && m.Action == Action).FirstOrDefault();
+                    UserPageView PageView = ExistingVisitorSession.Where(m => m.UserIP == UserIP && m.ID == ID && m.Controller == m.Controller && m.Action == Action).FirstOrDefault();
                     if (PageView != null)
                     {
                         // Update the page count if user last visit time is more than 1 hour
@@ -111,30 +112,28 @@ namespace BaseProject.Controllers
                             PageView.Count += 1;
                         }
                         PageView.LastActivityOn = DateTime.UtcNow;
-                        UserSes.UserPageViews.Remove(UserSes.UserPageViews.Where(m => m.ID == ID && m.Controller == m.Controller && m.Action == Action).FirstOrDefault());
-                        UserSes.UserPageViews.Add(PageView);
+                        ExistingVisitorSession.Remove(ExistingVisitorSession.Where(m => m.ID == ID && m.Controller == m.Controller && m.Action == Action && m.UserIP == UserIP).FirstOrDefault());
+                        ExistingVisitorSession.Add(PageView);
                     }
                     else
                     {
-                        UserSes.UserPageViews.Add(new UserPageView { Action = Action, Controller = Controller, ID = ID, Count = 1, CreatedOn = DateTime.UtcNow, LastActivityOn = DateTime.UtcNow });
+                        ExistingVisitorSession.Add(new UserPageView { UserIP = UserIP, Action = Action, Controller = Controller, ID = ID, Count = 1, CreatedOn = DateTime.UtcNow, LastActivityOn = DateTime.UtcNow });
                     }
-                    UserSes.LastActivityOn = DateTime.UtcNow;
-
-                    ExistingVisitorSession.Remove(ExistingVisitorSession.Where(m => m.UserIP == UserIP).FirstOrDefault()); // Remove old UserSessions obj
-                    ExistingVisitorSession.Add(UserSes); // Add Updated UserSessions obj
                 }
                 else // New User
                 {
-                    ExistingVisitorSession.Add(new UserSessions
-                    {
-                        CreatedOn = DateTime.UtcNow,
-                        LastActivityOn = DateTime.UtcNow,
-                        UserIP = UserIP,
-                        UserPageViews = new List<UserPageView>
-                        { 
-                            new UserPageView { Action=Action, Controller=Controller, Count=1, ID=ID,CreatedOn = DateTime.UtcNow, LastActivityOn = DateTime.UtcNow } 
-                        }
-                    });
+                    ExistingVisitorSession.Add(
+                            new UserPageView
+                            {
+                                UserIP = UserIP,
+                                Action = Action,
+                                Controller = Controller,
+                                Count = 1,
+                                ID = ID,
+                                CreatedOn = DateTime.UtcNow,
+                                LastActivityOn = DateTime.UtcNow
+                            }
+                    );
                 }
                 //Session.Add(Sessions.VisitorSessions, ExistingVisitorSession); // Updating Existing User Session with current page view request
                 System.Web.HttpContext.Current.Application.Lock();

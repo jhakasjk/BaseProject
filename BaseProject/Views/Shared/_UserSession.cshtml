@@ -1,27 +1,37 @@
-﻿@model List<UserSessions>
+﻿@model List<UserPageView>
+@{
+    List<UserPageView> UserSessions = Model;
+    
+}
 @if (Model != null)
 {
-    foreach (UserSessions UserSession in Model)
+
+    @*<table class="user-table">
+        <tr><th colspan="3">User Session Detail</th></tr>
+        @foreach (var item in UserSession)
+        {
+            
+        }
+    </table>*@
+    foreach (string IP in UserSessions.Select(m => m.UserIP).Distinct().ToList())
     {
         <table class="user-table">
             <tr><th colspan="3">User Session Detail</th></tr>
             <tr>
-                <td>UserIP: @UserSession.UserIP</td>
-                <td><strong>CreatedOn:</strong> @UserSession.CreatedOn.ToString()</td>
-                <td><strong>LastActivityOn:</strong> @UserSession.LastActivityOn.ToString()</td>
+                <td>UserIP: @IP</td>                
             </tr>
-            @foreach (var UserPageView in UserSession.UserPageViews)
+            @foreach (UserPageView UserSession in UserSessions.Where(m => m.UserIP == IP).ToList())
             {
                 <tr>
                     <td>
-                        PageURL: @UserPageView.Controller/@UserPageView.Action/@UserPageView.ID
+                        PageURL: @UserSession.Controller/@UserSession.Action/@UserSession.ID
                     </td>
                     <td>
-                        Page Visit: @UserPageView.Count
+                        Page Visit: @UserSession.Count
                     </td>
                     <td>
-                        <strong>CreatedOn:</strong> @UserPageView.CreatedOn.ToString()<br />
-                        <strong>LastActivityOn:</strong> @UserPageView.LastActivityOn.ToString()
+                        <strong>CreatedOn:</strong> @UserSession.CreatedOn.ToString()<br />
+                        <strong>LastActivityOn:</strong> @UserSession.LastActivityOn.ToString()
                     </td>
                 </tr>
             }
