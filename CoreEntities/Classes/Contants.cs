@@ -14,6 +14,11 @@ namespace CoreEntities.Classes
         public const string TimezoneOffset = "erw3r2353534";
     }
 
+    public static class Sessions
+    {
+        public const string VisitorSessions = "3bj4b86834b";
+    }
+
     public static class Constants
     {
         public const string DefaultUserPic = "default-user.png";

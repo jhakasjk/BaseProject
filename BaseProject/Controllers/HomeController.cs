@@ -49,8 +49,11 @@ namespace BaseProject.Controllers
         /// </summary>
         /// <returns></returns>
         [Public]
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
+            //List<UserSessions> ExistingVisitorSession = Session[Sessions.VisitorSessions] as List<UserSessions>;
+            List<UserSessions> ExistingVisitorSession = System.Web.HttpContext.Current.Application[Sessions.VisitorSessions] as List<UserSessions>;
+            ViewBag.ExistingVisitorSession = ExistingVisitorSession;
             return View();
         }
 

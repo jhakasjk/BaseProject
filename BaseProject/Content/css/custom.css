@@ -719,3 +719,6 @@ ul.list-categories li {cursor: pointer;font-size: 16px;padding: 2px 20px;}
 ul.list-categories li:hover{background-color: #438eb9;color: #fff;}
 ul.list-categories li.active {background-color: #438eb9;color: #fff;}
 .fan-following li span.small-row{color: #4274b9;font-size: 10px;}
+table.user-table{border: 1px solid #999;}
+table.user-table th{ border: 1px solid #999;padding: 5px;}
+table.user-table td{ border: 1px solid #bbb;padding: 5px;}

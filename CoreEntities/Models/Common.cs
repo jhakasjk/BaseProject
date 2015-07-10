@@ -9,6 +9,24 @@ using System.Threading.Tasks;
 
 namespace CoreEntities.Models
 {
+    public class UserSessions
+    {
+        public string UserIP { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime LastActivityOn { get; set; }
+        public List<UserPageView> UserPageViews { get; set; }
+    }
+
+    public class UserPageView
+    {
+        public string Controller { get; set; }
+        public string Action { get; set; }
+        public string ID { get; set; }
+        public int Count { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime LastActivityOn { get; set; }
+    }
+
     public class APICountry
     {
         public int CountryID { get; set; }

@@ -16,6 +16,10 @@ using CoreEntities.Interfaces;
 using CoreEntities.Classes;
 using CoreEntities.Enums;
 using BaseProject.Helpers;
+using System.Web.SessionState;
+using System.Collections;
+using System.Reflection;
+using BaseProject.SignalR;
 #endregion
 
 namespace BaseProject.Controllers
@@ -60,6 +64,85 @@ namespace BaseProject.Controllers
                 //This needs to be changed to redirect the control to an error page.
                 else filterContext.Result = null;
             }
+        }
+
+        private string UserSessionsToView(List<UserSessions> ExistingVisitorSession)
+        {
+            return RenderRazorViewToString("_UserSession", ExistingVisitorSession);
+        }
+
+        private void UpdateUserSession(string Controller, string Action, string ID)
+        {
+            string UserIP = Request.UserHostAddress;
+            List<UserSessions> ExistingVisitorSession = System.Web.HttpContext.Current.Application[Sessions.VisitorSessions] as List<UserSessions>;
+            //System.Web.HttpContext.Current.Application["Name"] = "Value";
+            if (ExistingVisitorSession == null) // First User
+            {
+                List<UserSessions> ListSes = new List<UserSessions>();
+                UserSessions sess = new UserSessions
+                {
+                    CreatedOn = DateTime.UtcNow,
+                    LastActivityOn = DateTime.UtcNow,
+                    UserIP = UserIP,
+                    UserPageViews = new List<UserPageView> 
+                    { 
+                        new UserPageView { 
+                            Action = Action, Controller = Controller, ID = ID, Count=1,CreatedOn = DateTime.UtcNow,LastActivityOn = DateTime.UtcNow}
+                    }
+                };
+                ListSes.Add(sess);
+                ExistingVisitorSession = ListSes;
+                //Session.Add(Sessions.VisitorSessions, ListSes);
+                System.Web.HttpContext.Current.Application.Lock();
+                System.Web.HttpContext.Current.Application.Add(Sessions.VisitorSessions, ListSes); // Adding first user into Visitor Lists
+                System.Web.HttpContext.Current.Application.UnLock();
+            }
+            else
+            {
+                if (ExistingVisitorSession.Where(m => m.UserIP == UserIP).Any()) // Existing User
+                {
+                    UserSessions UserSes = ExistingVisitorSession.Where(m => m.UserIP == UserIP).FirstOrDefault();
+                    UserPageView PageView = UserSes.UserPageViews.Where(m => m.ID == ID && m.Controller == m.Controller && m.Action == Action).FirstOrDefault();
+                    if (PageView != null)
+                    {
+                        // Update the page count if user last visit time is more than 1 hour
+                        if (PageView.LastActivityOn < DateTime.UtcNow.AddMinutes(-1))
+                        {
+                            PageView.Count += 1;
+                        }
+                        PageView.LastActivityOn = DateTime.UtcNow;
+                        UserSes.UserPageViews.Remove(UserSes.UserPageViews.Where(m => m.ID == ID && m.Controller == m.Controller && m.Action == Action).FirstOrDefault());
+                        UserSes.UserPageViews.Add(PageView);
+                    }
+                    else
+                    {
+                        UserSes.UserPageViews.Add(new UserPageView { Action = Action, Controller = Controller, ID = ID, Count = 1, CreatedOn = DateTime.UtcNow, LastActivityOn = DateTime.UtcNow });
+                    }
+                    UserSes.LastActivityOn = DateTime.UtcNow;
+
+                    ExistingVisitorSession.Remove(ExistingVisitorSession.Where(m => m.UserIP == UserIP).FirstOrDefault()); // Remove old UserSessions obj
+                    ExistingVisitorSession.Add(UserSes); // Add Updated UserSessions obj
+                }
+                else // New User
+                {
+                    ExistingVisitorSession.Add(new UserSessions
+                    {
+                        CreatedOn = DateTime.UtcNow,
+                        LastActivityOn = DateTime.UtcNow,
+                        UserIP = UserIP,
+                        UserPageViews = new List<UserPageView>
+                        { 
+                            new UserPageView { Action=Action, Controller=Controller, Count=1, ID=ID,CreatedOn = DateTime.UtcNow, LastActivityOn = DateTime.UtcNow } 
+                        }
+                    });
+                }
+                //Session.Add(Sessions.VisitorSessions, ExistingVisitorSession); // Updating Existing User Session with current page view request
+                System.Web.HttpContext.Current.Application.Lock();
+                System.Web.HttpContext.Current.Application.Add(Sessions.VisitorSessions, ExistingVisitorSession); // Updating Existing User Session with current page view request
+                System.Web.HttpContext.Current.Application.UnLock();
+            }
+            UserAvtivitHub hub = new UserAvtivitHub();
+            hub.UserAcvititySend(UserSessionsToView(ExistingVisitorSession));
         }
 
         /// <summary>
@@ -129,6 +212,9 @@ namespace BaseProject.Controllers
             #endregion
 
             SetActionName(filter_context.ActionDescriptor.ActionName, filter_context.ActionDescriptor.ControllerDescriptor.ControllerName);
+            string id = filter_context.Controller.ValueProvider.GetValue("id").AttemptedValue;
+            // Add Each New User Reqeust To Session
+            UpdateUserSession(filter_context.ActionDescriptor.ActionName, filter_context.ActionDescriptor.ControllerDescriptor.ControllerName, id);
         }
 
         /// <summary>
@@ -328,7 +414,7 @@ namespace BaseProject.Controllers
         [Public]
         public ActionResult Error(string id)
         {
-            return View(viewName:"Message", model: id);
+            return View(viewName: "Message", model: id);
         }
     }
 }

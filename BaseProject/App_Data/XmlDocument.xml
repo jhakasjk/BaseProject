@@ -609,7 +609,7 @@
             <param name="errorLogManager"></param>
             <param name="pushNotificationManager"></param>
         </member>
-        <member name="M:BaseProject.Controllers.HomeController.Index">
+        <member name="M:BaseProject.Controllers.HomeController.Index(System.String)">
             <summary>
             Home page if the website
             </summary>
@@ -745,6 +745,27 @@
             </summary>
             <param name="url"></param>
             <returns></returns>
+        </member>
+        <member name="T:BaseProject.Resources.Common">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:BaseProject.Resources.Common.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:BaseProject.Resources.Common.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:BaseProject.Resources.Common.WelcomeMessage">
+            <summary>
+              Looks up a localized string similar to Hello World.
+            </summary>
         </member>
     </members>
 </doc>
