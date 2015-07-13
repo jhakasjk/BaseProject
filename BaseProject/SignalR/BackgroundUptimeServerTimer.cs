@@ -11,7 +11,7 @@ namespace BaseProject.SignalR
 {
     public class BackgroundUptimeServerTimer : IRegisteredObject
     {
-        private readonly DateTime _internetBirthDate = On.October.The29th.In(2014);
+        private readonly DateTime _internetBirthDate = On.July.The13th.In(2015).At(20,15);
         private readonly IHubContext _uptimeHub;
         private readonly int _timezoneOffset;
         private Timer _timer;
@@ -35,9 +35,10 @@ namespace BaseProject.SignalR
         private void BroadcastUptimeToClients(object state)
         {
             TimeSpan uptime = DateTime.Now - _internetBirthDate;
-
-            //_uptimeHub.Clients.All.internetUpTime(uptime.Humanize(5));            
-            _uptimeHub.Clients.All.internetUpTime(DateTime.Now.ToString());
+            _uptimeHub.Clients.All.internetUpTime(uptime.Humanize(2)+" to go home!!!");
+            //DateTime dt = new DateTime(2015, 7, 13, 20, 15, 00);
+            //DateTime dt2 = DateTime.Now;
+            //_uptimeHub.Clients.All.internetUpTime((dt - dt2).Minutes + " minutes to go Home!!!");
         }
 
         public void Stop(bool immediate)

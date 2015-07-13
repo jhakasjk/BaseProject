@@ -4921,3 +4921,16 @@ http://jsonformat.com/
 
 
 
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+

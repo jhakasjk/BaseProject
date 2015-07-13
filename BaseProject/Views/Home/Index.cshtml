@@ -6,7 +6,7 @@
 
 <div class="center-content">
     @BaseProject.Resources.Common.WelcomeMessage<br />
-    <div>Current Time: <span id="timer"></span></div>
+    <div>Current Time: <span id="timer" style="font-weight:bold;font-size:16px;"></span></div>
     <div class="center-inr Jokes-div">
         @Html.Partial("_UserSession", ExistingVisitorSession)
     </div>
@@ -42,21 +42,14 @@
                 //    chat.server.send($('#displayname').val(), $('#message').val());
                 //    // Clear text box and reset focus for next comment.
                 //    $('#message').val('').focus();
-                //});
+                //});   
             });
 
 
             var hub = $.connection.uptimeHub;
             $.connection.hub.start();
             hub.client.internetUpTime = function (time) {
-                $('#timer').text('');
-                var arr = time.split(",");
-                for (var i = 0; i < arr.length; i++) {
-                    $('#timer').append(arr[i]);
-                    if (i < arr.length - 1) {
-                        $('#timer').append('<br/>');
-                    }
-                }
+                $('#timer').text(time);                
             };
         });
         // This optional function html-encodes messages for display in the page.
