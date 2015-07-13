@@ -1,24 +1,41 @@
 ﻿@model List<UserPageView>
 @{
     List<UserPageView> UserSessions = Model;
-    
+
 }
 @if (Model != null)
 {
-
-    @*<table class="user-table">
-        <tr><th colspan="3">User Session Detail</th></tr>
-        @foreach (var item in UserSession)
-        {
-            
-        }
-    </table>*@
+    foreach (var URL in UserSessions.Select(m => (m.Controller + "/" + m.Action + "/" + m.ID)).Distinct().ToList())
+    {
+        <table class="user-table">
+            <tr><th colspan="3">User Session Detail</th></tr>
+            <tr>
+                <td colspan="3">Page: @URL.ToString()</td>
+            </tr>
+            @foreach (UserPageView UserSession in UserSessions.Where(m => m.Controller + "/" + m.Action + "/" + m.ID == URL.ToString()).ToList())
+            {
+                <tr>
+                    <td>
+                        UserIP: @UserSession.UserIP
+                    </td>
+                    <td>
+                        Page Visit: @UserSession.Count
+                    </td>
+                    <td>
+                        <strong>CreatedOn:</strong> @UserSession.CreatedOn.ToString()<br />
+                        <strong>LastActivityOn:</strong> @UserSession.LastActivityOn.ToString()
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    <br />
     foreach (string IP in UserSessions.Select(m => m.UserIP).Distinct().ToList())
     {
         <table class="user-table">
             <tr><th colspan="3">User Session Detail</th></tr>
             <tr>
-                <td>UserIP: @IP</td>                
+                <td colspan="3">UserIP: @IP</td>
             </tr>
             @foreach (UserPageView UserSession in UserSessions.Where(m => m.UserIP == IP).ToList())
             {

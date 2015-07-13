@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        Loading Resources...
+    </div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+    var favoritePage = 0;
+    var profilePage = 0;
+    var CategoryID = null;
+
+    $(document).ready(function () {
+        var offset = new Date().getTimezoneOffset();
+        $.ajaxExt({
+            type: "POST",
+            data: { TimeZoneOffsetValue: offset },
+            url: '@Url.Action("TimezoneOffset", "Home")',
+            success: function (data) { window.location.href='@Url.Action("Index", "Home", new { id=123456 })' },
+            showThrobber: false,
+            showErrorMessage: false
+        });
+    });
+</script>

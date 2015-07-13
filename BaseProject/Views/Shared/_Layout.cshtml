@@ -138,16 +138,6 @@
         $(document).ready(function () {
             paging.pageSize = parseInt('20');
             paging.currentPage = 0;
-
-            var offset = new Date().getTimezoneOffset();
-            $.ajaxExt({
-                type: "POST",
-                data: { TimeZoneOffsetValue: offset },
-                url: '@Url.Action("TimezoneOffset", "Home")',
-                success: function (data) { },
-                showThrobber: false,
-                showErrorMessage: false
-            });
         });
 
         function goto(url) {

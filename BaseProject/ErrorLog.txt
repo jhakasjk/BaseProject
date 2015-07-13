@@ -4491,3 +4491,433 @@ http://jsonformat.com/
 
 
 
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 214
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 218
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 218
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 218
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 218
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 222
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 222
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 222
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 222
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 222
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 222
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 226
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 226
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 226
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 226
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 226
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 226
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 226
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 226
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 227
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+
+Object reference not set to an instance of an object.
+/
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaseProject.Controllers.BaseController.OnAuthorization(AuthorizationContext filter_context) in d:\Projects\BaseProject\BaseProject\Controllers\BaseController.cs:line 227
+   at System.Web.Mvc.Controller.System.Web.Mvc.IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+
+
+Object reference not set to an instance of an object.
+http://jsonformat.com/
+
+
+

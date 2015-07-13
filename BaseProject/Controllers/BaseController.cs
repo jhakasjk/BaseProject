@@ -20,6 +20,7 @@ using System.Web.SessionState;
 using System.Collections;
 using System.Reflection;
 using BaseProject.SignalR;
+using System.Web.Hosting;
 #endregion
 
 namespace BaseProject.Controllers
@@ -142,6 +143,13 @@ namespace BaseProject.Controllers
             }
             UserAvtivitHub hub = new UserAvtivitHub();
             hub.UserAcvititySend(UserSessionsToView(ExistingVisitorSession));
+
+            // Timer 
+            HttpCookie cookie = Request.Cookies[Cookies.TimezoneOffset];
+            int TimeZoneOffset = 0;
+            if (cookie != null)
+                TimeZoneOffset = Convert.ToInt32(cookie.Value);
+            HostingEnvironment.RegisterObject(new BackgroundUptimeServerTimer(TimeZoneOffset));
         }
 
         /// <summary>
@@ -409,6 +417,9 @@ namespace BaseProject.Controllers
                 return dateTime.AddMinutes(Convert.ToInt32(cookie.Value));
             return dateTime;
         }
+
+        [Public]
+        public ActionResult SetTimeZoneOffset() { return View(); }
 
         [Public]
         public ActionResult Error(string id)

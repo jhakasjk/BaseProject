@@ -5,7 +5,8 @@
 }
 
 <div class="center-content">
-    @BaseProject.Resources.Common.WelcomeMessage
+    @BaseProject.Resources.Common.WelcomeMessage<br />
+    <div>Current Time: <span id="timer"></span></div>
     <div class="center-inr Jokes-div">
         @Html.Partial("_UserSession", ExistingVisitorSession)
     </div>
@@ -19,7 +20,8 @@
     <script src="~/signalr/hubs"></script>
     <!--SignalR script to update the chat page and send messages.-->
     <script>
-        $(function () {            
+        $(function () {
+
             // Reference the auto-generated proxy for the hub.
             var userActivity = $.connection.userAvtivitHub;
             // Create a function that the hub can call back to display messages.
@@ -42,6 +44,20 @@
                 //    $('#message').val('').focus();
                 //});
             });
+
+
+            var hub = $.connection.uptimeHub;
+            $.connection.hub.start();
+            hub.client.internetUpTime = function (time) {
+                $('#timer').text('');
+                var arr = time.split(",");
+                for (var i = 0; i < arr.length; i++) {
+                    $('#timer').append(arr[i]);
+                    if (i < arr.length - 1) {
+                        $('#timer').append('<br/>');
+                    }
+                }
+            };
         });
         // This optional function html-encodes messages for display in the page.
         function htmlEncode(value) {
