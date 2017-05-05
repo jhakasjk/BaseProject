@@ -1,0 +1,225 @@
+﻿@{
+    Layout = null;
+}
+@model int
+<script src="/Scripts/jquery-1.9.1.js"></script>
+<script src="/Scripts/jquery-ui.1.9.2.js"></script>
+<script src="/Scripts/jquery.form.js"></script>
+<link href="/Content/css/fonts.css" rel="stylesheet" />
+
+<script src="/Scripts/UserDefinedScripts/Common.js"></script>
+<link href="~/Content/Admin/CSS/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/css/uploader.css" rel="stylesheet" />
+
+
+<div class="document-uploader">
+    <form action="/Document/Upload" method="post" enctype="multipart/form-data" id="fileUpload-@Model">
+        <div class="input-box">
+            <input type="file" name="Document" id="Document">
+            <div class="file-clone">Add Files</div>
+        </div>
+        <div class="input-box">
+            <input type="hidden" name="DocumentId" id="DocumentId">
+            @*<input type="submit" value="Upload" onclick="return check(this)">*@
+        </div>
+    </form>
+    <div class="progress">
+        <div class="bar bar-@Model"></div>
+        @*<div class="percent percent-@Model">0%</div>*@
+    </div>
+    <div id="status" class="upload-file">
+        <ul></ul>
+    </div>
+</div>
+<script type="text/javascript">
+    function ChangeHeight()
+    {
+        //alert(window.location.href);
+        //window.parent.document.getElementById('fdocuploaded').style.height = '700px';
+    }
+
+
+    var icons = ['fa fa-file-o', 'fa fa-file-excel-o', 'fa fa-file-archive-o', 'fa fa-file-image-o', 'fa fa-file-text',
+                 'fa fa-file-powerpoint-o', 'fa fa-file-pdf-o'];
+    var bar = $('#fileUpload-@Model').parent().find('.bar-@Model');
+    //var percent = $('#fileUpload-@Model').parent().find('.percent-@Model');
+    //var status = $('#fileUpload-@Model').parent().find('#status');
+    $('#fileUpload-@Model').ajaxForm({
+        beforeSend: function () {
+            //status.html('');
+            //alert($('#fileUpload-@Model').parent().html());
+            var percentVal = '0%';
+            bar.width(percentVal);
+            $('#fileUpload-@Model').parent().find('.bar-@Model').css('width', '0%');
+            //percent.html(percentVal);
+        },
+        uploadProgress: function (event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            //bar.width(percentVal);
+            $('#fileUpload-@Model').parent().find('.bar-@Model').css('width', percentVal);
+            $('.progress').show();
+            //percent.html(percentVal);
+            //$('#fileUpload-@Model').find('.bar').css('width', percentVal);
+        },
+        complete: function (xhr) {
+            var result = JSON.parse(xhr.responseText);
+            var iconCls = icons[0];
+            var ext = result.Object.DisplayName.substr((result.Object.DisplayName.lastIndexOf('.') + 1));
+            switch (ext) {
+                case 'jpg':
+                case 'png':
+                case 'gif':
+                    iconCls = icons[3];
+                    break;
+                case 'zip':
+                case 'rar':
+                    iconCls = icons[2];
+                    break;
+                case 'pdf':
+                    iconCls = icons[6];
+                    break;
+                case 'doc':
+                case 'txt':
+                case 'rtf':
+                case 'docx':
+                    iconCls = icons[4];
+                    break;
+                case 'ppt':
+                case 'pptx':
+                    iconCls = icons[5];
+                    break;
+                case 'xls':
+                case 'xlsx':
+                    iconCls = icons[1];
+                    break;
+                default:
+                    iconCls = icons[0];
+                    break;
+            }
+            $('.progress').hide();
+
+            $('#fileUpload-@Model').find('#DocumentId').val(result.Object.Id);
+            $('#fileUpload-@Model').parent().find('#status ul')
+                .append('<li class="added-document" id="' + result.Object.Id + '"><span class="name">' +
+                            result.Object.DisplayName + '</span><span class="icon">' +
+                            '<i class="' + iconCls + '"></i></span><span class="delete-file" title="delete">' +
+                            '<i class="fa fa-trash" onclick="removeFile(this)" ></i></span></li>');
+            $('input:file').val('');
+            var height = document.body.scrollHeight
+            parent.ResizeIFrame('iframe-fileuploader', height);
+        },
+        url: '/Document/Upload'
+    });
+
+    $(document).ready(
+        function () {
+            $('input:file').change(
+                function () {
+                    if ($(this).val()) {
+                        $(this).parents('form').submit();
+                        //$('input:submit').attr('disabled', false);
+                        // or, as has been pointed out elsewhere:
+                        // $('input:submit').removeAttr('disabled');
+                    }
+                });
+        });
+    function removeFile(sender) {
+        $(sender).parents('li.added-document').remove();
+    }
+    function check(sender) {
+        if (!$('input:file').val()) {
+            alert('please select file first!');
+            return false;
+        } else
+            return true;
+    }
+</script>
+
+<style type="text/css">
+    .document-uploader {
+        padding: 5px;
+        width: 200px;
+    }
+
+    .bar {
+        background: #1f7004;
+        float: left;
+        height: 5px;
+    }
+
+    .percent {
+    }
+
+    .status {
+    }
+
+
+    .progress {
+        margin: 0;
+        border: 1px solid #996;
+        border-radius: 2px;
+        height: 7px;
+        width: 100%;
+        display: none;
+    }
+
+    .added-document {
+        /*border: 1px solid #ccc;
+        border-radius: 5px;
+        float: left;
+        margin: 2px;
+        padding: 2px;*/
+    }
+
+        .added-document .name {
+            float: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 320px;
+        }
+
+        .added-document .icon {
+            float: left;
+            font-size: 15px;
+            text-align: center;
+            width: 20px;
+        }
+
+
+        .added-document .delete-file {
+            float: left;
+            width: 20px;
+            font-size: 15px;
+            border-right: 0px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .added-document span {
+            /*border-right: 1px solid #ccc;*/
+            padding: 3px;
+            font-size: 13px;
+        }
+
+    .document-uploader #status ul {
+        float: left;
+        list-style: outside none none;
+        margin: 0;
+        padding: 0;
+        width: 400px;
+    }
+
+    .document-uploader #status li {
+        float: left;
+        margin: 0;
+        position: relative;
+        width: 100%;
+        /*border: 1px solid #ccc;*/
+        border-bottom: 1px solid #ccc;
+        color: #333;
+    }
+
+        .document-uploader #status li:last-child {
+            /*border-bottom: 1px solid #ccc;*/
+        }
+</style>

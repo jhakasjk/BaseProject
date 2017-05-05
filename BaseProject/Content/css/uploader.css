@@ -1,0 +1,82 @@
+﻿
+.document-uploader .input-box {
+    float: left;
+    margin-top: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+.document-uploader input[type="file"] {
+    border-radius: 4px;
+    cursor: pointer;
+    left: 0;
+    opacity: 0;
+    padding: 9px 0;
+    position: absolute;
+    top: 0;
+    z-index: 9999;
+}
+
+.document-uploader .file-clone {
+    background: #ff5d44 none repeat scroll 0 0;
+    border: 1px solid #ff5d44;
+    border-radius: 4px;
+    color: #fff;
+    font-family: "GothamPro";
+    font-size: 1em;
+    padding: 8px 20px;
+    text-align: center;
+    width: 100px;
+}
+
+
+.document-uploader .input-box {
+    float: left;
+    margin-top: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+
+.progress {
+    left: 0;
+    position: absolute;
+    top: 59px;
+    width: 50%;
+}
+.progress .bar {
+    height: 7px;
+}
+
+.document-uploader #status {
+    position: absolute;
+    top: 70px;
+    width: auto;
+}
+.upload-file {
+    float: left;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.document-uploader #status ul {
+    list-style: outside none none;
+    margin: 0;
+}
+.document-uploader #status li {
+    float: left;
+    position: relative;
+}
+.upload-file ul li {
+    color: #ff5d44;
+    float: left;
+    font-family: "GothamPro";
+    font-size: 12px;
+    margin-right: 10px;
+    width: auto;
+}
+.upload-file ul li {
+    color: #ff5d44;
+    font-family: "GothamPro";
+    font-size: 12px;
+}

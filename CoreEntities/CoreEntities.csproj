@@ -51,11 +51,13 @@
     <Compile Include="Classes\Rijndael.cs" />
     <Compile Include="Classes\Utility.cs" />
     <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Interfaces\IDocumentManager.cs" />
     <Compile Include="Interfaces\IErrorLogManager.cs" />
     <Compile Include="Interfaces\IPushNotificationManager.cs" />
     <Compile Include="Interfaces\IHomeManager.cs" />
     <Compile Include="Interfaces\IUserManager.cs" />
     <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\DocumentModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

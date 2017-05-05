@@ -28,5 +28,6 @@ namespace DataAccessLayer.Model.DataModel
         public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserLoginSession> UserLoginSessions { get; set; }
+        public virtual DbSet<Document> Documents { get; set; }
     }
 }

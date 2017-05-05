@@ -50,3 +50,11 @@ CREATE TABLE dbo.UserLoginSessions(
 	LoggedInDeviceToken varchar(500) NULL,
 	DeviceType int NOT NULL
 )
+
+If not exists (select 1 from sysobjects where name='Document' and xtype='U') Begin Create Table Document(
+	Id int Primary Key Identity(1,1),
+	DisplayName Varchar(250) Not Null,
+	SavedName Varchar(250) Not Null,
+	Mime Varchar(250) Not Null,
+	DownloadBinary Varbinary(max) Not Null,
+) End

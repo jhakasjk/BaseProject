@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -222,6 +223,7 @@
     <Compile Include="Controllers\API\BaseApiController.cs" />
     <Compile Include="Controllers\API\HomeController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\API\UserController.cs" />
     <Compile Include="Controllers\API\WebApiAuthorizeController.cs" />
@@ -286,9 +288,15 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\fonts.css" />
     <Content Include="Content\css\paging.css" />
+    <Content Include="Content\css\uploader.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\GothamPro-Black.svg" />
+    <Content Include="Content\fonts\GothamPro-Bold.svg" />
+    <Content Include="Content\fonts\GothamPro-Medium.svg" />
+    <Content Include="Content\fonts\GothamPro.svg" />
     <Content Include="Content\images\1.jpg" />
     <Content Include="Content\images\ad.jpg" />
     <Content Include="Content\images\ajax-loader.gif" />
@@ -386,6 +394,7 @@
     <Content Include="Icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-ui.1.9.2.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Scripts\npm.js" />
@@ -397,6 +406,19 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\fastdom.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Content\fonts\desktop.ini" />
+    <Content Include="Content\fonts\GothamPro-Black.eot" />
+    <Content Include="Content\fonts\GothamPro-Black.ttf" />
+    <Content Include="Content\fonts\GothamPro-Black.woff" />
+    <Content Include="Content\fonts\GothamPro-Bold.eot" />
+    <Content Include="Content\fonts\GothamPro-Bold.ttf" />
+    <Content Include="Content\fonts\GothamPro-Bold.woff" />
+    <Content Include="Content\fonts\GothamPro-Medium.eot" />
+    <Content Include="Content\fonts\GothamPro-Medium.ttf" />
+    <Content Include="Content\fonts\GothamPro-Medium.woff" />
+    <Content Include="Content\fonts\GothamPro.eot" />
+    <Content Include="Content\fonts\GothamPro.ttf" />
+    <Content Include="Content\fonts\GothamPro.woff" />
     <None Include="Properties\PublishProfiles\BaseProject.pubxml" />
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\ace-extra.js" />
@@ -457,6 +479,8 @@
     <Content Include="Views\Shared\_Paging.cshtml" />
     <Content Include="Views\Shared\_UserSession.cshtml" />
     <Content Include="Views\Shared\SetTimeZoneOffset.cshtml" />
+    <Content Include="Views\Document\Index.cshtml" />
+    <Content Include="Views\Shared\_FileUploader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">

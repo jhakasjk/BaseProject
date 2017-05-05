@@ -54,12 +54,25 @@ namespace BaseProject.Controllers
         /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            List<string> errors = new List<string>();
+            //Get Data Against a specific RoleName
             if (!ModelState.IsValid)
             {
+                var message = string.Join(", ", ModelState.Values
+                                    .Where(m => m.Errors.Count() > 0)
+                                    .SelectMany(m => m.Errors)
+                                    .Select(e => e.ErrorMessage));
+
+                message += string.Join(", ", ModelState.Values
+                                    .Where(m => m.Errors.Count() > 0)
+                                    .SelectMany(m => m.Errors)
+                                    .Where(e => e.Exception != null)
+                                    .Select(m => m.Exception.Message));
+
                 if (Request.IsAjaxRequest()) filterContext.Result = Json(new ActionOutput
                 {
                     Status = ActionStatus.Error,
-                    Message = "Validation Error"
+                    Message = "Validation Error: " + message
                 }, JsonRequestBehavior.AllowGet);
 
                 //This needs to be changed to redirect the control to an error page.
@@ -219,9 +232,12 @@ namespace BaseProject.Controllers
             #endregion
 
             SetActionName(filter_context.ActionDescriptor.ActionName, filter_context.ActionDescriptor.ControllerDescriptor.ControllerName);
-            string id = filter_context.Controller.ValueProvider.GetValue("id").AttemptedValue;
-            // Add Each New User Reqeust To Session
-            UpdateUserSession(filter_context.ActionDescriptor.ActionName, filter_context.ActionDescriptor.ControllerDescriptor.ControllerName, id);
+            if (filter_context.Controller.ValueProvider.GetValue("id") != null)
+            {
+                string id = filter_context.Controller.ValueProvider.GetValue("id").AttemptedValue;
+                // Add Each New User Reqeust To Session
+                UpdateUserSession(filter_context.ActionDescriptor.ActionName, filter_context.ActionDescriptor.ControllerDescriptor.ControllerName, id);
+            }
         }
 
         /// <summary>

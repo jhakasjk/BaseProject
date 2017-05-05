@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="DBModel.User" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="DBModel.UserLoginSession" Width="1.5" PointX="5.625" PointY="2.625" />
         <AssociationConnector Association="DBModel.FK__UserLogin__UserI__1ED998B2" />
+        <EntityTypeShape EntityType="DBModel.Document" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

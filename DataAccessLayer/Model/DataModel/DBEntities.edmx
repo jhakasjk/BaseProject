@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="SavedName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Mime" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="DownloadBinary" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="ErrorLog">
           <Key>
             <PropertyRef Name="ErrorLogID" />
@@ -63,7 +73,7 @@
           <Property Name="FacbookUserID" Type="varchar" MaxLength="200" />
           <Property Name="TotalEarning" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <Association Name="FK__UserLogin__UserI__1ED998B2">
+        <Association Name="FK__UserLogin__UserI__1920BF5C">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="UserLoginSessions" Type="Self.UserLoginSessions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -76,10 +86,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLoginSessions" EntityType="Self.UserLoginSessions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__UserLogin__UserI__1ED998B2" Association="Self.FK__UserLogin__UserI__1ED998B2">
+          <AssociationSet Name="FK__UserLogin__UserI__1920BF5C" Association="Self.FK__UserLogin__UserI__1920BF5C">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserLoginSessions" EntitySet="UserLoginSessions" />
           </AssociationSet>
@@ -110,6 +121,7 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserLoginSession" EntitySet="UserLoginSessions" />
           </AssociationSet>
+          <EntitySet Name="Documents" EntityType="DBModel.Document" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -169,6 +181,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SavedName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Mime" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DownloadBinary" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -233,6 +255,17 @@
                 <ScalarProperty Name="LoggedInTime" ColumnName="LoggedInTime" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="UserLoginSessionID" ColumnName="UserLoginSessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="DBModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="DownloadBinary" ColumnName="DownloadBinary" />
+                <ScalarProperty Name="Mime" ColumnName="Mime" />
+                <ScalarProperty Name="SavedName" ColumnName="SavedName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

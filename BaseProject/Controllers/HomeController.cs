@@ -324,5 +324,6 @@ namespace BaseProject.Controllers
             ResetPasswordModel reset = new ResetPasswordModel { NewPassword = model.Password, ResetCode = model.ResetCode, UserEmail = model.UserEmail };
             return Json(_homeManager.ResetPassword(reset), JsonRequestBehavior.AllowGet);
         }
+
     }
 }

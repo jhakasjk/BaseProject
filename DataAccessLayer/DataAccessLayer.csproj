@@ -65,6 +65,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataModel\Document.cs">
+      <DependentUpon>DBEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataModel\ErrorLog.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>

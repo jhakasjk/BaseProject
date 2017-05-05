@@ -592,15 +592,6 @@ function FillSelectList(selectControl, data, clearData, selectedItem) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+function ResizeIFrame(iframeClass, height) {
+    $('iframe').css('height', height);
+}

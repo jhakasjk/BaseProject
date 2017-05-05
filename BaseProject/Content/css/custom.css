@@ -722,3 +722,10 @@ ul.list-categories li.active {background-color: #438eb9;color: #fff;}
 table.user-table{border: 1px solid #999;}
 table.user-table th{ border: 1px solid #999;padding: 5px;}
 table.user-table td{ border: 1px solid #bbb;padding: 5px;}
+
+.ifram-box{width:600px;}
+.iframe-fileuploader {
+    border: 0 none;
+    height: 110px;
+    width: 100%;
+}

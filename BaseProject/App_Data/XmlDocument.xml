@@ -216,6 +216,21 @@
             Initializes a new instance of the <see cref="T:BaseProject.Areas.HelpPage.HelpPageSampleGenerator"/> class.
             </summary>
         </member>
+        <member name="P:BaseProject.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:BaseProject.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:BaseProject.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
         <member name="M:BaseProject.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
             <summary>
             Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
@@ -279,21 +294,6 @@
             <param name="type">The type.</param>
             <param name="mediaType">Type of the media.</param>
             <returns></returns>
-        </member>
-        <member name="P:BaseProject.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
-            <summary>
-            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
-            </summary>
-        </member>
-        <member name="P:BaseProject.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
-            <summary>
-            Gets the objects that are used directly as samples for certain actions.
-            </summary>
-        </member>
-        <member name="P:BaseProject.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
-            <summary>
-            Gets the objects that are serialized as samples by the supported formatters.
-            </summary>
         </member>
         <member name="T:BaseProject.Areas.HelpPage.HelpPageSampleKey">
             <summary>
@@ -503,6 +503,63 @@
             <param name="DeviceType"></param>
             <returns></returns>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:BaseProject.Controllers.API.UserController" -->
+        <member name="M:BaseProject.Controllers.API.UserController.UpdateUser(CoreEntities.Models.APIUpdateUser)">
+            <summary>
+            Update User Information in Database.        
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseProject.Controllers.API.UserController.ChangePassword(CoreEntities.Models.ChangePasswordModel)">
+            <summary>
+            Change logged in User's Password
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseProject.Controllers.API.UserController.Logout">
+            <summary>
+            Logout the logged in User
+            Post Url: http://www.mydomain.com/api/user/logout
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BaseProject.Controllers.API.UserController.UploadProfilePic(CoreEntities.Models.PictureModel)">
+            <summary>
+            Upload Profile picture of logged in user. PictureString must be in bse64 string format.
+            </summary>
+            <param name="PictureString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseProject.Controllers.API.UserController.GetUserInformation(System.String)">
+            <summary>
+            Get user by Email
+            </summary>
+            <param name="Email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseProject.Controllers.API.UserController.GetUserInformation(System.Int32)">
+            <summary>
+            Get user by UserID
+            </summary>
+            <param name="UserID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseProject.Controllers.API.UserController.TestPush(System.String,System.String,System.Int32)">
+            <summary>
+            Test Push Notifications
+            </summary>
+            <param name="Message"></param>
+            <param name="DeviceToken"></param>
+            <param name="DeviceType"></param>
+            <returns></returns>
+        </member>
+        <member name="P:BaseProject.Controllers.BaseController.LOGGEDIN_USER">
+            <summary>
+            Contains Information for Logged In User
+            </summary>
+        </member>
         <member name="M:BaseProject.Controllers.BaseController.#ctor(CoreEntities.Interfaces.IErrorLogManager)">
             <summary>
             
@@ -589,11 +646,6 @@
             </summary>
             <param name="dateTime"></param>
             <returns></returns>
-        </member>
-        <member name="P:BaseProject.Controllers.BaseController.LOGGEDIN_USER">
-            <summary>
-            Contains Information for Logged In User
-            </summary>
         </member>
         <member name="T:BaseProject.Controllers.HomeController">
             <summary>
@@ -685,58 +737,6 @@
             Reset Password
             </summary>
             <param name="model"></param>
-            <returns></returns>
-        </member>
-        <!-- Badly formed XML comment ignored for member "T:BaseProject.Controllers.API.UserController" -->
-        <member name="M:BaseProject.Controllers.API.UserController.UpdateUser(CoreEntities.Models.APIUpdateUser)">
-            <summary>
-            Update User Information in Database.        
-            </summary>
-            <param name="user"></param>
-            <returns></returns>
-        </member>
-        <member name="M:BaseProject.Controllers.API.UserController.ChangePassword(CoreEntities.Models.ChangePasswordModel)">
-            <summary>
-            Change logged in User's Password
-            </summary>
-            <param name="model"></param>
-            <returns></returns>
-        </member>
-        <member name="M:BaseProject.Controllers.API.UserController.Logout">
-            <summary>
-            Logout the logged in User
-            Post Url: http://www.mydomain.com/api/user/logout
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:BaseProject.Controllers.API.UserController.UploadProfilePic(CoreEntities.Models.PictureModel)">
-            <summary>
-            Upload Profile picture of logged in user. PictureString must be in bse64 string format.
-            </summary>
-            <param name="PictureString"></param>
-            <returns></returns>
-        </member>
-        <member name="M:BaseProject.Controllers.API.UserController.GetUserInformation(System.String)">
-            <summary>
-            Get user by Email
-            </summary>
-            <param name="Email"></param>
-            <returns></returns>
-        </member>
-        <member name="M:BaseProject.Controllers.API.UserController.GetUserInformation(System.Int32)">
-            <summary>
-            Get user by UserID
-            </summary>
-            <param name="UserID"></param>
-            <returns></returns>
-        </member>
-        <member name="M:BaseProject.Controllers.API.UserController.TestPush(System.String,System.String,System.Int32)">
-            <summary>
-            Test Push Notifications
-            </summary>
-            <param name="Message"></param>
-            <param name="DeviceToken"></param>
-            <param name="DeviceType"></param>
             <returns></returns>
         </member>
         <member name="M:BaseProject.Helpers.UserHelper.GetUrl(System.String)">
